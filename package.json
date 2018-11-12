@@ -6,10 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["etc","discord","utility"],
+  "keywords": [
+    "etc",
+    "discord",
+    "utility"
+  ],
   "author": "mikeyb",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "underscore": "^1.9.1"
   }
 }
