@@ -45,22 +45,20 @@ discord.on(
                 default: return;
             }
         } else {
-            if (message.channel.name === 'development') {
-                if (message.author.bot) { return; } else {
-                    const content = message.toString().toLowerCase();
-                    const hasBlacklistedWebsite = _.some(
-                        blacklisted_websites,
-                        site => { return content.includes(site); }
+            if (message.author.bot) { return; } else {
+                const content = message.toString().toLowerCase();
+                const hasBlacklistedWebsite = _.some(
+                    blacklisted_websites,
+                    site => { return content.includes(site); }
+                );
+                if (hasBlacklistedWebsite) {
+                    await message.delete();
+                    await CHANNEL_MODS.send('' +
+                        '` -- BLACKLISTED WEBSITE POSTED -- `' +
+                        '\n\n' + message.author + ' posted the following (now deleted) message with a blacklisted website:' +
+                        '\n' + message.content
                     );
-                    if (hasBlacklistedWebsite) {
-                        await message.delete();
-                        await CHANNEL_MODS.send('' +
-                            '` -- BLACKLISTED WEBSITE POSTED -- `' +
-                            '\n\n' + message.author + ' posted the following (now deleted) message with a blacklisted website:' +
-                            '\n' + message.content
-                        );
-                        await message.reply('that website is not allowed here.  Moderators have been notified.');
-                    }
+                    await message.reply('that website is not allowed here.  Moderators have been notified.');
                 }
             }
         }
