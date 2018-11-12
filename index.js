@@ -29,7 +29,7 @@ discord.on(
 discord.on(
     'message',
     async message => {
-        if (message.channel.name === CHANNEL_INTRO_NAME) {
+        if (message.channel.name === CHANNEL_INTRO_NAME && !message.author.bot) {
             return CHANNEL_MODS.send(message.author + ' `-- Requesting Approval --` ' + message.content);
         }
 
