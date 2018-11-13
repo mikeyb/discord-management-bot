@@ -23,7 +23,7 @@ discord.on(
         CHANNEL_MODS = await GUILD.channels.find(channel => channel.name === CHANNEL_MODS_NAME);
         CHANNEL_INTRO = await GUILD.channels.find(channel => channel.name === CHANNEL_INTRO_NAME);
 
-        setInterval(() => { CHANNEL_INTRO.send('Checking for humans -> Send a message in this channel for approval.'); }, 3600000);
+        setInterval(() => { CHANNEL_INTRO.send('Checking for humans -> Send a message in this channel for approval.'); }, 21600000);
     }
 );
 
