@@ -107,6 +107,6 @@ const getPools = async message => {
             pools,
             pool => { return reply = reply + '\n'; }
         );
-        return message.channel.send(reply + '```');
+        return await message.channel.send(reply + '```');
     }
 };
