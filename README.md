@@ -5,6 +5,8 @@ Useful utilities for the ETC Discord community
 ### User
 - `!report [reason]`
   - Used to report all the naughties to admins/mods
+- `!geth`
+  - Send Geth links (only in #development channel)
 
 ### Admins/Mods
 - Approval requests show up in moderation channel

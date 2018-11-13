@@ -42,6 +42,7 @@ discord.on(
             const command = args.shift().toLowerCase();
             switch (command) {
                 case 'report': report(message); break;
+                case 'geth': geth(message); break;
                 default: return;
             }
         } else {
@@ -82,4 +83,17 @@ const report = async message => {
         '\n`CHANNEL` ' + message.channel +
         '\n`CONTENT` ' + args[1]
     );
+}
+
+const geth = message => {
+    if (message.channel.name === 'development') {
+        const reply = '' +
+            '```' +
+            '\nGithub: https://github.com/ethereumproject/go-ethereum' +
+            '\nReleases: https://github.com/ethereumproject/go-ethereum/releases' +
+            '\nWiki: https://github.com/ethereumproject/go-ethereum/wiki' +
+            '\nCommands: https://github.com/ethereumproject/go-ethereum/wiki/Command-Line-Options' +
+            '```';
+        return message.channel.send(reply);
+    }
 }
