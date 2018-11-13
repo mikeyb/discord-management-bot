@@ -86,7 +86,7 @@ const report = async message => {
 }
 
 const geth = message => {
-    if (message.channel.name === 'development') {
+    if (message.channel.name === 'development' || message.channel.name === 'mining') {
         const reply = '' +
             '```' +
             '\nGithub: https://github.com/ethereumproject/go-ethereum' +
