@@ -7,6 +7,8 @@ Useful utilities for the ETC Discord community
   - Used to report all the naughties to admins/mods
 - `!geth`
   - Send Geth links (only in #development or #mining channels)
+- `!pools`
+  - Send list of pools to #mining channel
 
 ### Admins/Mods
 - Approval requests show up in moderation channel

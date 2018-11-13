@@ -2,6 +2,7 @@ const _ = require('underscore');
 const Discord = require('discord.js');
 const secrets = require('./.secrets.json');
 const blacklisted_websites = require('./assets/blacklisted_websites');
+const pools = require('./assets/pools');
 
 const discord = new Discord.Client();
 discord.login(secrets.discord.API_SECRET);
@@ -83,7 +84,7 @@ const report = async message => {
         '\n`CHANNEL` ' + message.channel +
         '\n`CONTENT` ' + args[1]
     );
-}
+};
 
 const geth = message => {
     if (message.channel.name === 'development' || message.channel.name === 'mining') {
@@ -96,4 +97,15 @@ const geth = message => {
             '```';
         return message.channel.send(reply);
     }
-}
+};
+
+const pools = message => {
+    if (message.channel.name === 'mining') {
+        let reply = '```';
+        _.each(
+            pools,
+            pool => { return reply = reply + '\n'; }
+        );
+        return message.channel.send(reply + '```');
+    }
+};
