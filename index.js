@@ -100,10 +100,10 @@ const geth = message => {
     }
 };
 
-const getPools = message => {
+const getPools = async message => {
     if (message.channel.name === 'mining') {
         let reply = '```';
-        _.each(
+        await _.each(
             pools,
             pool => { return reply = reply + '\n'; }
         );
