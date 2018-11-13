@@ -44,6 +44,7 @@ discord.on(
             switch (command) {
                 case 'report': report(message); break;
                 case 'geth': geth(message); break;
+                case 'pools': getPools(message); break;
                 default: return;
             }
         } else {
@@ -99,7 +100,7 @@ const geth = message => {
     }
 };
 
-const pools = message => {
+const getPools = message => {
     if (message.channel.name === 'mining') {
         let reply = '```';
         _.each(
