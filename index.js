@@ -2,7 +2,9 @@ const _ = require('underscore');
 const Discord = require('discord.js');
 const secrets = require('./.secrets.json');
 const blacklisted_websites = require('./assets/blacklisted_websites');
-const pools = require('./assets/pools');
+
+const { geth, getPools } = require('./lib/doc');
+const report = require('./lib/report');
 
 const discord = new Discord.Client();
 discord.login(secrets.discord.API_SECRET);
@@ -42,7 +44,7 @@ discord.on(
             const args = message.content.slice(1).split(/ +/);
             const command = args.shift().toLowerCase();
             switch (command) {
-                case 'report': report(message); break;
+                case 'report': report(message, CHANNEL_MODS); break;
                 case 'geth': geth(message); break;
                 case 'pools': getPools(message); break;
                 default: return;
@@ -67,46 +69,3 @@ discord.on(
         }
     }
 );
-
-const report = async message => {
-    const args = message.content.slice(1).split(/report\s+/);
-    message.member.createDM().then(
-        dmchannel => {
-            dmchannel.send('' +
-                '`-- REPORT RECIEVED --`' +
-                '\n\n`CHANNEL` ' + message.channel +
-                '\n`CONTENT` ' + args[1]
-            );
-        }
-    );
-    return await CHANNEL_MODS.send('' +
-        '`-- REPORT --`' +
-        '\n\n`REPORTER` ' + message.author +
-        '\n`CHANNEL` ' + message.channel +
-        '\n`CONTENT` ' + args[1]
-    );
-};
-
-const geth = message => {
-    if (message.channel.name === 'development' || message.channel.name === 'mining') {
-        const reply = '' +
-            '```' +
-            '\nGithub: https://github.com/ethereumproject/go-ethereum' +
-            '\nReleases: https://github.com/ethereumproject/go-ethereum/releases' +
-            '\nWiki: https://github.com/ethereumproject/go-ethereum/wiki' +
-            '\nCommands: https://github.com/ethereumproject/go-ethereum/wiki/Command-Line-Options' +
-            '```';
-        return message.channel.send(reply);
-    }
-};
-
-const getPools = message => {
-    if (message.channel.name === 'mining') {
-        let reply = '```';
-        _.each(
-            pools,
-            pool => { return reply = reply + pool + '\n'; }
-        );
-        return message.channel.send(reply + '```');
-    }
-};
