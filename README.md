@@ -24,6 +24,7 @@ Useful utilities for the ETC Discord community
         "COMMAND_PREFIX": "!",
         "CHANNEL_MODS_NAME": "",
         "CHANNEL_INTRO_NAME": ""
+        "CHANNEL_TICKER_NAME": ""
     }
 }
 ```
