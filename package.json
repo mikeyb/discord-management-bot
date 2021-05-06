@@ -19,7 +19,7 @@
     "mysql2": "^1.6.4",
     "request-promise": "^4.2.4",
     "sequelize": "^5.15.1",
-    "underscore": "^1.9.1",
+    "underscore": "^1.12.1",
     "web3": "^1.0.0-beta.36"
   }
 }
